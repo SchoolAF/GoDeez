@@ -1,34 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Deezer API Data Table</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+	  <title>GoDeez</title>
+    <link rel="stylesheet" href="css/main.css" />    <!-- Icon Lib -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="styles/main.css">
 </head>
+
 <body>
-<div class="container-fluid">
-{{ range .Tracks }}
-        <div class="container py-3 my-3" >
-            <div class="row">
-                <div class="col-2">
-                    <img src="{{ .Album.CoverURL }}" alt="Album Cover" id="album-cover">
-
+  <div class="container">
+    <h1>Made for you!</h1>
+    <div class="grid-container">
+      {{ range .Tracks }}
+      <div class="grid-item">
+        <div class="preview-card" style="background-image: url({{ .Album.CoverURL }});" id="audioPlayer">
+          <div class="content">
+            <div class="playctl">
+              <audio id="myAudio">
+                <source src="{{ .PreviewURL }}" type="audio/mpeg">
+              </audio>
+              <div id="controls">
+                <button class="ctrlBtn" id="playPauseButton">
+                  <i class="bi bi-play-fill"></i>
+                </button>
+                <div class="playerInfo">
+                  <span class="trackTitleText">{{ .Title }}</span>
+                  <span class="trackArtistText">{{ .Artist.Name }}</span>
                 </div>
-
-                <div class="col-10">
-                    <div id="{{ .ID }}" class="track_preview">
-                        <h2>{{ .Title }}</h2>
-                        <h3>{{ .Artist.Name }}</h3>
-                        <audio src="{{ .PreviewURL }}" controls="true" class="preview_player"></audio>
-                    </div>
+                <div class="progress-bar-container">
+                  <div id="progressBar"></div>
                 </div>
+              </div>
             </div>
+          </div>
         </div>
-    {{ end }}
-</div>
-
+      </div>
+      {{ end }}
+    </div>
+  </div>
+  <script src="js/audio.js"></script>
 </body>

@@ -5,4 +5,5 @@ This application write in GoLang using Deezer's API to obtain Music's data and i
 ## Used libraries and tools
 - [Deezer API](https://developers.deezer.com/login?redirect=/api) - Main data resource for this app.
 - [Gin](https://github.com/gin-gonic/gin) - Backend framework
-- [Bootsrap 5.3](https://getbootstrap.com/) - Frontend styling framework
+- [Bootsrap Icons](https://getbootstrap.com/) - Frontend styling framework
+- [MintPLayer](https://github.com/herobuxx) - Customized frontend Media Player

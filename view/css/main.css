@@ -1,0 +1,98 @@
+@import url('https://rsms.me/inter/inter.css');
+
+html { 
+	font-family: 'Inter', sans-serif; 
+    scrollbar-width: none; /* For Firefox */
+    -ms-overflow-style: none; /* For Internet Explorer and Edge */
+}
+
+html::-webkit-scrollbar {
+    width: 0px; /* For Chrome, Safari, and Opera */
+}
+
+body {
+    background-color: #0e0e0e;
+    color: white;
+}
+
+.container {
+  margin-left: 12.5%;
+  margin-right: 12.5%;
+}
+
+.preview-card {
+  position: relative;
+  border-radius: 2.5vh;
+  width: 15vw;
+  height: 15vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.playctl {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+#audioPlayer {
+  /* Style the audio player container */
+}
+
+#audioPlayer audio {
+  display: none; /* Hide the default audio controls */
+}
+
+#audioPlayer #controls {
+  /* Style the controls container */
+}
+
+#audioPlayer #playPauseButton {
+  /* Style the play/pause button */
+}
+
+#audioPlayer #progressBar {
+  position: sticky;
+  bottom: 0;
+  left: 0;  width: 100%;
+  height: 10px;
+  background-color: #ccc; /* Set the color of the progress bar */
+  margin-top: 10px;
+  border-bottom-left-radius: 2.5vh;
+  border-bottom-right-radius: 2.5vh;
+}
+
+.ctrlBtn {
+  background-color: transparent;
+  color: white;
+  font-size: 2vw;
+  border: none;
+  text-align: left;
+}
+
+.playerInfo {
+  padding: 1vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.trackTitleText {
+  font-weight: bold;
+}
+
+.trackArtistText {
+  font-size: 2vh;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* Three equal width columns */
+  grid-auto-rows: minmax(0%, 20vw); /* Minimum height of 100px for each row, expands as needed */
+  grid-gap: 10px; /* Gap between grid items */
+}
+
+.grid-item {
+  padding: 1%;
+}

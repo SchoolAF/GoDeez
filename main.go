@@ -15,7 +15,7 @@ type Track struct {
 	} `json:"artist"`
 	Album struct {
 		Title    string `json:"title"`
-		CoverURL string `json:"cover_medium"`
+		CoverURL string `json:"cover_big"`
 	} `json:"album"`
 	Duration   int    `json:"duration"`
 	PreviewURL string `json:"preview"`
@@ -29,7 +29,7 @@ func main() {
 	router := gin.Default()
 
 	router.LoadHTMLGlob("view/*.html")
-	router.Static("/styles", "./view/styles")
+	router.Static("/css", "./view/css")
 
 	router.GET("/", handleRequest)
 
