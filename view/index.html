@@ -1,40 +1,87 @@
 <head>
-	  <title>GoDeez</title>
-    <link rel="stylesheet" href="css/main.css" />    <!-- Icon Lib -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+  <title>GoDeez</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <!-- Icon Lib -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
 </head>
 
 <body>
-  <div class="container">
-    <h1>Made for you!</h1>
-    <div class="grid-container">
-      {{ range .Tracks }}
-      <div class="grid-item">
-        <div class="preview-card" style="background-image: url({{ .Album.CoverURL }});" id="audioPlayer">
-          <div class="content">
-            <div class="playctl">
-              <audio id="myAudio">
-                <source src="{{ .PreviewURL }}" type="audio/mpeg">
-              </audio>
-              <div id="controls">
-                <button class="ctrlBtn" id="playPauseButton">
-                  <i class="bi bi-play-fill"></i>
-                </button>
-                <div class="playerInfo">
-                  <span class="trackTitleText">{{ .Title }}</span>
-                  <span class="trackArtistText">{{ .Artist.Name }}</span>
-                </div>
-                <div class="progress-bar-container">
-                  <div id="progressBar"></div>
-                </div>
+<div class="container">
+  <h1>Made for you!</h1>
+  <div class="grid-container">
+    {{ range .Tracks }}
+    <div class="grid-item">
+      <div class="preview-card" style="background-image: url({{ .Album.CoverURL }});" id="audioPlayer-{{ .ID }}">
+        <div class="content">
+          <div class="playctl">
+            <audio id="myAudio-{{ .ID }}">
+              <source src="{{ .PreviewURL }}" type="audio/mpeg">
+            </audio>
+            <div id="controls">
+              <button class="ctrlBtn" class="playPauseButton" id="playPauseButton-{{ .ID }}">
+                <i class="bi bi-play-fill"></i>
+              </button>
+              <div class="playerInfo">
+                <span class="trackTitleText">{{ .Title }}</span>
+                <span class="trackArtistText">{{ .Artist.Name }}</span>
+              </div>
+
+              <div class="progressBar-container2">
+                <div class="progressBar2" id="progressBar-{{ .ID }}"></div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      {{ end }}
     </div>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", function() {
+        var audios = document.querySelectorAll("[id^='myAudio']");
+        var playPauseButtons = document.querySelectorAll("[id^='playPauseButton']");
+        var progressBars = document.querySelectorAll("[id^='progressBar']");
+
+        function handlePlayPauseButtonClick(index) {
+          var audio = audios[index];
+          var playPauseButton = playPauseButtons[index];
+
+          if (audio.paused) {
+            audio.play();
+            playPauseButton.innerHTML = '<i class="bi bi-pause-fill"></i>'; // Change to pause icon
+          } else {
+            audio.pause();
+            playPauseButton.innerHTML = '<i class="bi bi-play-fill"></i>'; // Change to play icon
+          }
+        }
+
+        function handleTimeUpdate(index) {
+          var audio = audios[index];
+          var progressBar = progressBars[index];
+          var progress = (audio.currentTime / audio.duration) * 100;
+          progressBar.style.width = progress + "%";
+
+          if (progress === 100) {
+            progressBar.classList.remove("active");
+          } else {
+            progressBar.classList.add("active");
+          }
+        }
+
+        for (var i = 0; i < playPauseButtons.length; i++) {
+          (function(index) {
+            playPauseButtons[index].addEventListener("click", function() {
+              handlePlayPauseButtonClick(index);
+            });
+
+            audios[index].addEventListener("timeupdate", function() {
+              handleTimeUpdate(index);
+            });
+          })(i);
+        }
+      });
+    </script>
+    {{ end }}
   </div>
-  <script src="js/audio.js"></script>
+</div>
 </body>

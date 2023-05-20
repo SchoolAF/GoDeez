@@ -49,11 +49,11 @@ body {
   /* Style the controls container */
 }
 
-#audioPlayer #playPauseButton {
+#audioPlayer .playPauseButton {
   /* Style the play/pause button */
 }
 
-#audioPlayer #progressBar {
+#audioPlayer .progressBar {
   position: sticky;
   bottom: 0;
   left: 0;  width: 100%;
@@ -95,4 +95,21 @@ body {
 
 .grid-item {
   padding: 1%;
+}
+
+.progressBar-container2 {
+  width: 100%;
+  height: 1vw;
+  background-color: #333333;
+  border-radius: 2px;
+  overflow: hidden;
+  border-bottom-left-radius: 2.5vh;
+  border-bottom-right-radius: 2.5vh;
+}
+
+.progressBar2 {
+  height: 100%;
+  background-color: white;
+  width: 0;
+  transition: width 0.2s ease;
 }
