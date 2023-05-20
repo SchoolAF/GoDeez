@@ -2,9 +2,11 @@ package main
 
 import (
 	"encoding/json"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
+	"strconv"
 )
 
 type Track struct {
@@ -37,8 +39,15 @@ func main() {
 }
 
 func handleRequest(c *gin.Context) {
+	limit := 50 // Set the desired limit to retrieve more tracks, e.g., 50
+	indexStr := c.Query("index")
+	index, _ := strconv.Atoi(indexStr)
+
+	// Construct the URL with pagination parameters
+	url := fmt.Sprintf("https://api.deezer.com/chart/0/tracks?limit=%d&index=%d", limit, index)
+
 	// Retrieve data from Deezer API
-	response, err := http.Get("https://api.deezer.com/chart/0/tracks")
+	response, err := http.Get(url)
 	if err != nil {
 		log.Fatal(err)
 	}
