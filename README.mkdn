@@ -7,3 +7,20 @@ This application write in GoLang using Deezer's API to obtain Music's data and i
 - [Gin](https://github.com/gin-gonic/gin) - Backend framework
 - [Bootsrap Icons](https://getbootstrap.com/) - Frontend styling framework
 - [MintPLayer](https://github.com/herobuxx) - Customized frontend Media Player
+- [MySQL driver for GoLang](github.com/go-sql-driver/mysql) - A MySQL-Driver for Go's database/sql package
+
+
+## Running GoDeez
+
+- Clone this repositpru and enter the directory
+```
+$ https://github.com/SchoolAF/GoDeez -b main
+$ cd GoDeez
+```
+
+- Import databse from `sql/deezdb.sql` into your MySQL Server.
+
+- Then, run the server
+```
+go run main.go
+```
