@@ -113,3 +113,15 @@ body {
   width: 0;
   transition: width 0.2s ease;
 }
+
+.like-container {
+  margin-top: 1vh;
+}
+
+.likeButton {
+  background-color: transparent;
+  color: white;
+  font-size: 1.3vw;
+  border: none;
+  text-align: left;
+}

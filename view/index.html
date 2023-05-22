@@ -12,27 +12,33 @@
   <div class="grid-container">
     {{ range .Tracks }}
     <div class="grid-item">
-      <div class="preview-card" style="background-image: url({{ .Album.CoverURL }});" id="audioPlayer-{{ .ID }}">
+      <div class="preview-card" style="background-image: url({{ .Track.Album.CoverURL }});" id="audioPlayer-{{ .Track.ID }}">
         <div class="content">
           <div class="playctl">
-            <audio id="myAudio-{{ .ID }}">
-              <source src="{{ .PreviewURL }}" type="audio/mpeg">
+            <audio id="myAudio-{{ .Track.ID }}">
+              <source src="{{ .Track.PreviewURL }}" type="audio/mpeg">
             </audio>
             <div id="controls">
-              <button class="ctrlBtn" class="playPauseButton" id="playPauseButton-{{ .ID }}">
+              <button class="ctrlBtn" class="playPauseButton" id="playPauseButton-{{ .Track.ID }}">
                 <i class="bi bi-play-fill"></i>
               </button>
               <div class="playerInfo">
-                <span class="trackTitleText">{{ .Title }}</span>
-                <span class="trackArtistText">{{ .Artist.Name }}</span>
+                <span class="trackTitleText">{{ .Track.Title }}</span>
+                <span class="trackArtistText">{{ .Track.Artist.Name }}</span>
               </div>
 
               <div class="progressBar-container2">
-                <div class="progressBar2" id="progressBar-{{ .ID }}"></div>
+                <div class="progressBar2" id="progressBar-{{ .Track.ID }}"></div>
               </div>
             </div>
           </div>
         </div>
+      </div>
+      <div class="like-container">
+        <button class="likeButton" id="likeButton-{{ .Track.ID }}" onclick="likeTrack({{ .Track.ID }})">
+          <i class="fa fa-heart"></i>
+        </button>
+        <span id="likeCount-{{ .Track.ID }}">{{ .LikeCount }}</span>
       </div>
     </div>
 
@@ -80,6 +86,37 @@
           })(i);
         }
       });
+
+      function likeTrack(trackID) {
+        var likeCountElement = document.getElementById("likeCount-" + trackID);
+        var likeCount = parseInt(likeCountElement.textContent);
+
+        // Send a POST request to increment the like count
+        fetch("/like", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            trackID: trackID
+          })
+        })
+                .then(function(response) {
+                  return response.json();
+                })
+                .then(function(data) {
+                  if (data.success) {
+                    // Increment the like count in the UI
+                    likeCount++;
+                    likeCountElement.textContent = likeCount;
+                  } else {
+                    console.log("Failed to increment like count");
+                  }
+                })
+                .catch(function(error) {
+                  console.log("Error:", error);
+                });
+      }
     </script>
     {{ end }}
   </div>
