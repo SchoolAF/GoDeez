@@ -41,7 +41,7 @@ func main() {
 	router.Static("/css", "./view/css")
 
 	// Open a connection to the SQL database
-	db, err := sql.Open("mysql", "deez:54321@tcp(localhost:3306)/DeezDB")
+	db, err := sql.Open("mysql", "root:@tcp(localhost:3306)/DeezDB")
 	if err != nil {
 		log.Fatal(err)
 	}
