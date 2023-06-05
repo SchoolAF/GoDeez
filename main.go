@@ -1,5 +1,12 @@
 package main
 
+/*
+	Author: Aliffathur Muhammad Revan (me@buxxed.me)
+			Gilang Andhika Buwana (gryzlegrizz@gmail.com)
+
+	Institution: Universitas Logistik dan Bisnis Internasional (ULBI)
+*/
+
 import (
 	"database/sql"
 	"encoding/json"
@@ -18,10 +25,8 @@ type Track struct {
 		Name string `json:"name"`
 	} `json:"artist"`
 	Album struct {
-		Title    string `json:"title"`
 		CoverURL string `json:"cover_big"`
 	} `json:"album"`
-	Duration   int    `json:"duration"`
 	PreviewURL string `json:"preview"`
 }
 
@@ -53,6 +58,7 @@ func main() {
 		log.Fatal(err)
 	}
 
+	// Main router
 	router.GET("/", func(c *gin.Context) {
 		limit := 50 // Set the desired limit to retrieve more tracks, e.g., 50
 		indexStr := c.Query("index")
@@ -90,6 +96,7 @@ func main() {
 		})
 	})
 
+	// A router used to proccess like counts
 	router.POST("/like", func(c *gin.Context) {
 		var requestData struct {
 			TrackID int `json:"trackID"`
@@ -114,6 +121,7 @@ func main() {
 	log.Fatal(router.Run(":8080"))
 }
 
+// A function to add like counts by one point and Add/Update it into MySQL Database
 func incrementLikeCount(trackID int, db *sql.DB) error {
 	// Check if the track exists in the database
 	query := "SELECT like_counts FROM tracks WHERE track_id = ?"
@@ -128,11 +136,12 @@ func incrementLikeCount(trackID int, db *sql.DB) error {
 		return err
 	}
 
-	// Increment the like count
+	// Increment like count and query it into MySQL Database
 	_, err = db.Exec("UPDATE tracks SET like_counts = ? WHERE track_id = ?", currentLikeCount+1, trackID)
 	return err
 }
 
+// A function to get Track's Like Counts from MySQL Database
 func getLikeCount(trackID int, db *sql.DB) int {
 	query := "SELECT like_counts FROM tracks WHERE track_id = ?"
 	var likeCount int
