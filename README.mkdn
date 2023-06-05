@@ -24,3 +24,6 @@ $ cd GoDeez
 ```
 go run main.go
 ```
+
+## Documents
+- [Book: Tutorial Integrasi API Dalam Katalog Musik Online](https://github.com/SchoolAF/GoDeez-Buku/blob/main/Buku_Proyek_1_Gilang_%26_Aliffathur.pdf)
