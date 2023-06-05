@@ -70,6 +70,13 @@ body {
   font-size: 2vw;
   border: none;
   text-align: left;
+  cursor: pointer;
+  transition: 1s;
+}
+
+  .ctrlBtn:hover {
+  text-shadow: 0 0 18px #000;
+  transition: .5s;
 }
 
 .playerInfo {
@@ -124,4 +131,12 @@ body {
   font-size: 1.3vw;
   border: none;
   text-align: left;
+  cursor: pointer;
+  transition: 1s;
+}
+
+.likeButton:hover {
+  color: red;
+  text-shadow: 0 0 8px red;
+  transition: .5s;
 }
