@@ -1,29 +1,17 @@
-# GoDeez - Find new musics!
+# Tutorial Integrasi API dalam Katalog Musik Online
+![cover logo](https://github.com/SchoolAF/GoDeez/tree/main/book/cover-book.jpg)
 
-This application write in GoLang using Deezer's API to obtain Music's data and it's preview.
+## Sinopsis
+Buku ini berisi tentang cara mengintegrasikan API dengan langkah-langkah terperinci yang mencangkup tahap pembuatan Back-end hingga aplikasi jadi. Tutorial ini dibuat bertujuan untuk membantu integrasi API dalam pembuatan aplikasi atau website dengan menggunakan golang Golang dan menggunakan database MySQL
 
-## Used libraries and tools
-- [Deezer API](https://developers.deezer.com/login?redirect=/api) - Main data resource for this app.
-- [Gin](https://github.com/gin-gonic/gin) - Backend framework
-- [Bootsrap Icons](https://getbootstrap.com/) - Frontend styling framework
-- [MintPLayer](https://github.com/herobuxx) - Customized frontend Media Player
-- [MySQL driver for GoLang](github.com/go-sql-driver/mysql) - A MySQL-Driver for Go's database/sql package
+## Tentang Penulis
+![image](https://github.com/SchoolAF/GoDeez/blob/main/book/Penulis1.jpg)
+Gilang Andhika Buwana, lahir di Kota Bekasi, Jawa Barat pada tanggal 21 Mei 2004. Pendidikan tingkat dasar ditempuh di Kabupaten Purwakarta dan Kabupaten Bekasi serta pendidikan menengah ditempuh di Kabupaten Bekasi, tepatnya di Kecamatan Serang Baru. Saat buku ini ditulis, penulis sedang menempuh Pendidikan perguruan tinggi jurusan DIV Teknik Informatika di Universitas Logistik & Bisnis Internasional.
 
 
-## Running GoDeez
+![image](https://github.com/SchoolAF/GoDeez/blob/main/book/Penulis2.jpg)
+Aliffathur Muhammad Revan, lahir di Kota Sibolga, Sumatera Utara pada tanggal 3 November 2003. Menempuh pendidikan tingkat dasar hingga menengah atas di Kota Bukittinggi, Sumatera Barat sebelum akhirnya melanjutkan Pendidikannya ke Universitas Logistik & Bisnis Internasional jurusan DIV Teknik Informatika.
 
-- Clone this repositpru and enter the directory
-```
-$ https://github.com/SchoolAF/GoDeez -b main
-$ cd GoDeez
-```
 
-- Import databse from `sql/deezdb.sql` into your MySQL Server.
-
-- Then, run the server
-```
-go run main.go
-```
-
-## Documents
-- [Book: Tutorial Integrasi API Dalam Katalog Musik Online](https://github.com/SchoolAF/GoDeez-Buku/blob/main/Buku_Proyek_1_Gilang_%26_Aliffathur.pdf)
+![image](https://github.com/SchoolAF/GoDeez/blob/main/book/Penulis3.jpg)
+Syafrial Fachri Pane, S.T.,M.T.I.,EBDP sudah menyelesaikan pendidikan D3 di bidang Teknik Informatika di Politeknik Pos Indonesia (kini Universitas Logistik dan Bisnis Internasional), Ia juga menyelesaikan studi Sarjana di bidang Teknik Informatika di Universitas Pasundan, dan Magister di bidang Teknik Informatika di Universitas Bina Nusantara. Saat ini, ia sedang mengejar pendidikan doktoral (S3) di bidang Teknik Informatika di Telkom University.
