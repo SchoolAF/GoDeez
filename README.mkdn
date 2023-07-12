@@ -1,5 +1,5 @@
 # Tutorial Integrasi API dalam Katalog Musik Online
-![cover logo](https://github.com/SchoolAF/GoDeez/tree/main/book/cover-book.jpg)
+![cover logo](https://github.com/SchoolAF/GoDeez/blob/main/book/cover-book.jpg)
 
 ## Sinopsis
 Buku ini berisi tentang cara mengintegrasikan API dengan langkah-langkah terperinci yang mencangkup tahap pembuatan Back-end hingga aplikasi jadi. Tutorial ini dibuat bertujuan untuk membantu integrasi API dalam pembuatan aplikasi atau website dengan menggunakan golang Golang dan menggunakan database MySQL
